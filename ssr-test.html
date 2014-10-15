@@ -1,0 +1,67 @@
+<head>
+  <title>SSR and events.</title>
+</head>
+
+<body>
+
+</body>
+
+<template name="hello">
+
+	{{> home }}
+
+	<p>
+		On the client, you can click on the <strong>name</strong> or the <strong>button</strong>, and stuff will happen (please try). On the server, not so much (unsuprisingly).
+	</p>
+
+	<p>
+		But is there some easy way to make simple events (without Meteor specific stuff like Sessions etc. probably) defined as Temlate.events() also work on the server? I'm thinking "simple" stuff like showing some hidden element etc on click? 
+	</p>
+		
+	<h2>
+		We are now @ {{ whereWeAt }}
+	</h2>
+
+	<h3>Items from a Template.helper collection (which have click events bound to them):</h3>
+
+	<ul>
+
+		{{#each something }}
+
+			<li>
+
+				<span class="span-name">{{ name }}</span>
+				{{ cool }}
+				<button class="btn-cool">
+					Click on button!
+				</button>
+
+			</li>
+
+		{{/each}}
+
+	</ul>
+	
+	<h3>Clicks:</h3>
+
+	{{#if clicks }}
+		<ol>
+			{{#each clicks }}
+				<li>{{ this }}</li>
+			{{/each}}
+		</ol>
+	{{/if}}
+
+</template>
+
+<template name="home">
+
+	<h1>SSR and events.</h1>
+	<a href="/server">Go to server version</a><br />
+	<a href="/client">Go to client version</a>
+
+	<p>
+		Start by going to either the server or client version of the "hello" template by using the links above.
+	</p>
+
+</template>
